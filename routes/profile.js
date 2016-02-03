@@ -20,7 +20,7 @@ router.get('/', function(req, res, next){
 
 router.get('/addBook', function(req, res) {
   res.render('addBook');
-})
+});
 
 router.post('/addBook', function(req, res) {
   console.log('newbook:', req.body);
@@ -53,12 +53,22 @@ router.put('/userBooks', function(req, res){
 });
 
 
-
-
 router.get('/availableBooks', function(req, res){
   Book.find({userId: {$ne: req.user._id}, available: true }, function(err, books){
     if (err) return res.status(400).send(err);
     res.render('availableBooks', {books: books});
+  });
+});
+
+router.get('/tradeScreen/:bookId', function(req, res) {
+  Book.findById(req.params.bookId, function(err, book){
+  console.log(book);
+    if (err) return res.status(400).send(err);
+    Book.find({userId: req.user._id, available: true}, function(err, userBooks){
+      console.log(userBooks);
+      if (err) return res.status(400).send(err);
+      res.render('tradeScreen', {book:book, userBooks: userBooks});
+    });
   });
 });
 

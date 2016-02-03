@@ -11,7 +11,8 @@ var bookSchema = new mongoose.Schema({
   author: String,
   isbn: Number,
   genre: String,
-  available: {type: Boolean, default: true}
+  available: {type: Boolean, default: true},
+  photoUrl: {type: String, default: "http://i.imgur.com/sJ3CT4V.gif"}
 });
 
 var Book = mongoose.model('Book', bookSchema);
