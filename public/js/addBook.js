@@ -14,7 +14,7 @@ function addBook(e) {
 
   $.post('/profile/addBook', newBook)
   .success(function(data) {
-    location.href = '/';
+    location.href = '/profile/userBooks';
   }).
   fail(function(err) {
     console.log('error adding book:', err);

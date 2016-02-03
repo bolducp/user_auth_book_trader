@@ -33,4 +33,11 @@ router.post('/addBook', function(req, res) {
   });
 });
 
+router.get('/userBooks', function(req, res) {
+  Book.find({userId: req.user._id}, function(err, books) {
+    if (err) return res.status(400).send(err);
+    res.render('userBooks', {books: books});
+  });
+});
+
 module.exports = router;
