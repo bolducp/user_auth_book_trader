@@ -1,0 +1,32 @@
+body {
+  background: url('/images/crisp_paper_ruffles.png') no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  color: black;
+  font-size: 80px;
+  text-align: center;
+}
+
+#userBooks {
+  background: url('/images/green-book.png') no-repeat;
+  background-size: contain;
+}
+#allBooks {
+  background: url('/images/orange-book.png') no-repeat;
+  background-size: contain;
+}
+#addBook {
+  background: url('/images/book-blue.png') no-repeat;
+  background-size: contain;
+}
+#transactionHistory {
+  background: url('/images/red-book.png') no-repeat;
+  background-size: contain;
+}
+
+.bookIcon {
+  height: 150px;
+  margin-top: 80px;
+}

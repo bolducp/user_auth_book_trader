@@ -1,0 +1,21 @@
+extends layout
+
+block scripts
+   link(rel='stylesheet', href='/css/profile.css')
+
+block content
+  h1 Hello, #{user.username}!
+  .row
+    .col-xs-6
+      a(href="/")
+        #userBooks.bookIcon
+    .col-xs-6
+      a(href="/")
+        #allBooks.bookIcon
+  .row
+    .col-xs-6
+      a(href="/")
+        #addBook.bookIcon
+    .col-xs-6
+      a(href="/")
+        #transactionHistory.bookIcon

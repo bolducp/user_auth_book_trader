@@ -7,11 +7,11 @@ $(function() {
 function loginUser(e) {
   e.preventDefault();
   var email = $('#email').val();
-  var password = $('#password');val();
+  var password = $('#password').val();
 
   $.post('/users/login', {email: email, password: password})
   .success(function(data) {
-    location.href = '/user/home';
+    location.href = '/profile';
   })
   .fail(function(err) {
     alert('Error.  Check console.');
