@@ -40,4 +40,30 @@ router.get('/userBooks', function(req, res) {
   });
 });
 
+
+router.put('/userBooks', function(req, res){
+  Book.findById(req.body.bookId, function(err, book){
+    if (err) return res.status(400).send(err);
+    book.available = !book.available;
+    book.save(function(err, savedBook){
+      if (err) return res.status(400).send(err);
+      res.send("status changed");
+    });
+  });
+});
+
+
+
+
+router.get('/availableBooks', function(req, res){
+  Book.find({userId: {$ne: req.user._id}, available: true }, function(err, books){
+    if (err) return res.status(400).send(err);
+    res.render('availableBooks', {books: books});
+  });
+});
+
+
+
+
+
 module.exports = router;

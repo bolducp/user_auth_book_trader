@@ -10,7 +10,8 @@ var bookSchema = new mongoose.Schema({
   title: String,
   author: String,
   isbn: Number,
-  genre: String
+  genre: String,
+  available: {type: Boolean, default: true}
 });
 
 var Book = mongoose.model('Book', bookSchema);

@@ -26,6 +26,10 @@ h1 {
   background-size: contain;
 }
 
+#registerLink, #loginLink {
+  display: none;
+}
+
 .bookIcon {
   height: 150px;
   margin-top: 80px;
