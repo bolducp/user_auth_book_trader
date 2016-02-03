@@ -27,6 +27,8 @@ router.post('/register', function(req, res, next) {
   });
 });
 
+
+
 /* POST to log in */
 router.post('/login', function(req, res, next) {
   ref.authWithPassword(req.body, function(err, authData) {
