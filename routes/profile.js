@@ -6,6 +6,7 @@ var router = express.Router();
 var authMiddleware = require('../config/auth');
 
 var User = require('../models/user');
+var Book = require('../models/book');
 
 router.use(authMiddleware);
 
@@ -15,7 +16,21 @@ router.get('/', function(req, res, next){
     if (err) return res.status(400).send(err);
     res.render('profile', {user: user});
   });
+});
+
+router.get('/addBook', function(req, res) {
+  res.render('addBook');
 })
 
+router.post('/addBook', function(req, res) {
+  console.log('newbook:', req.body);
+  console.log(req.user._id);
+  var newBook = req.body;
+  newBook.userId = req.user._id;
+  Book.create(newBook, function(err, savedBook) {
+    if (err) return res.status(400).send(err);
+    res.status(200).send('book added');
+  });
+});
 
 module.exports = router;

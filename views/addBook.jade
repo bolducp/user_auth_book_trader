@@ -1,0 +1,21 @@
+extends layout
+
+block content
+  h1 Add Book
+  form
+    .form-group
+      label(for='title') Title:
+      input#title.form-control(type='text', placeholder='title')
+    .form-group
+      label(for='author') Author:
+      input#author.form-control(type='text', placeholder='author')
+    .form-group
+      label(for='isbn') ISBN Number:
+      input#isbn.password.form-control(type='text', placeholder='ISBN number')
+    .form-group
+      label(for='genre') Genre(s):
+      input#genre.password.form-control(type='text', placeholder='genre')
+    button.btn.btn-default(type='submit') Add Book
+
+block scripts
+  script(src="/js/addBook.js")
