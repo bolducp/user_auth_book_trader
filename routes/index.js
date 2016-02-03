@@ -3,14 +3,17 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
+  if (req.cookies.mytoken) return res.redirect('/profile');
   res.render('index', { title: 'TITLE' });
 });
 
 router.get('/register', function(req, res, next){
+  if (req.cookies.mytoken) return res.redirect('/profile');
   res.render('register');
 });
 
 router.get('/login', function(req, res, next){
+  if (req.cookies.mytoken) return res.redirect('/profile');
   res.render('login');
 })
 
