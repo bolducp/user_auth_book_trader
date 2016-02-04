@@ -111,7 +111,7 @@ router.get('/transactions', function(req, res) {
 router.put('/transactions', function(req, res){
   Trade.findById(req.body.tradeId, function(err, trade){
     if (err) return res.status(400).send("error finding trade", err);
-    trade.status = "declined";
+    trade.status = req.body.result;
     trade.save(function(err, savedTrade){
       if (err) return res.status(400).send("error saving declined trade", err);
       res.status(200).send("transaction declined");

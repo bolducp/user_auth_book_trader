@@ -42,7 +42,7 @@ block content
           th
       tbody
         each trade in offeredTrades
-          tr
+          tr(data-trade=trade.id)
             td #{trade.receivingUser.username}
             td
               h3 #{trade.desiredBook.title}
