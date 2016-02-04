@@ -96,10 +96,29 @@ router.get('/transactions', function(req, res) {
     if (err) return res.status(400).send("error finding recieved trades",err);
     Trade.find({offeringUser: req.user._id, status: 'pending'}, function(err, offeredTrades) {
       if (err) return res.status(400).send("error finding offered trades",err);
-        res.render('transactions', {receivedTrades: receivedTrades, offeredTrades: offeredTrades});
+      Trade.find({receivingUser: req.user._id, status: {$ne:'pending'}}, function(err, pastReceivedTrades) {
+        if (err) return res.status(400).send("error finding past received trades",err);
+        Trade.find({offeringUser: req.user._id, status: {$ne:'pending'}}, function(err, pastOfferedTrades) {
+          if (err) return res.status(400).send("error finding past offered trades",err);
+          res.render('transactions', {receivedTrades: receivedTrades, offeredTrades: offeredTrades, pastReceivedTrades: pastReceivedTrades, pastOfferedTrades: pastOfferedTrades});
+        }).populate('offeredBook desiredBook receivingUser');
+      }).populate('offeredBook desiredBook offeringUser');
     }).populate('offeredBook desiredBook receivingUser');
   }).populate('offeredBook desiredBook offeringUser');
-})
+});
+
+
+router.put('/transactions', function(req, res){
+  Trade.findById(req.body.tradeId, function(err, trade){
+    if (err) return res.status(400).send("error finding trade", err);
+    trade.status = "declined";
+    trade.save(function(err, savedTrade){
+      if (err) return res.status(400).send("error saving declined trade", err);
+      res.status(200).send("transaction declined");
+    });
+  });
+});
+
 
 
 module.exports = router;

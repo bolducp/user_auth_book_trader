@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1 Add Book
+  h1 Add a book to your collection
   form
     .form-group
       label(for='title') Title:
@@ -15,7 +15,7 @@ block content
     .form-group
       label(for='genre') Genre(s):
       input#genre.password.form-control(type='text', placeholder='genre')
-    button.btn.btn-default(type='submit') Add Book
+    button.btn.btn-info(type='submit') Add Book
 
 block scripts
   script(src="/js/addBook.js")
