@@ -1,0 +1,23 @@
+extends layout
+
+block links
+  link(rel='stylesheet', href='/css/tradeScreen.css')
+
+block content
+  h1#tradeTitle Offer Trade
+  .row
+    .col-xs-4
+      img(src=book.photoUrl)
+    .col-xs-4
+      h1= book.title
+      h3 Author: #{book.author}
+      h3 Genre: #{book.genre}
+      h3 ISBN: #{book.isbn}
+    .col-xs-4
+      button.btn.btn-primary Offer Trade
+      select#offeredBook(data-bookoffered = book.id)
+        each userBook in userBooks
+          option(data-bookdesired = userBook.id) #{userBook.title}
+block scripts
+  script(src="/js/tradeScreen.js")
+  

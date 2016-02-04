@@ -1,0 +1,30 @@
+extends layout
+
+block links
+   link(rel='stylesheet', href='/css/userBooks.css')
+
+block content
+  h1 All Available Books
+  div#tableWrapper
+    table.table.table-hover
+      thead
+        tr
+          th Book Cover
+          th Title
+          th Author
+          th Genre
+          th ISBN
+          th Trade
+      tbody
+        each book in books
+          tr(data-book = book.id)
+            td 
+              img.bookIcon(src=book.photoUrl)
+            td #{book.title}
+            td #{book.author}
+            td #{book.genre}
+            td #{book.isbn}
+            td 
+              a(href=`/profile/tradeScreen/${book.id}`)#offerTrade Offer Trade
+              
+block scripts

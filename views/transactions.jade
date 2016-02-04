@@ -1,0 +1,57 @@
+extends layout
+
+block links
+   link(rel='stylesheet', href='/css/transactions.css')
+
+block content
+  h1 Transactions
+  #tableWrapper
+    h2 Trades Awaiting Your Decision
+    table.table.table-hover
+      thead
+        tr
+          th Request From
+          th Offering
+          th For
+          th Status
+          th
+          th
+      tbody
+        each trade in receivedTrades
+          tr
+            td #{trade.offeringUser.username}
+            td 
+              h3 #{trade.offeredBook.title}
+              img.bookIcon(src=trade.offeredBook.photoUrl)
+            td
+              h3 #{trade.desiredBook.title}
+              img.bookIcon(src=trade.desiredBook.photoUrl)
+            td.pending #{trade.status}
+            td
+              a.accept Accept
+            td 
+              a.decline Decline
+    h2 Your Offered Trades
+    table.table.table-hover
+      thead
+        tr
+          th Offered To
+          th Offering
+          th For
+          th Status
+          th
+      tbody
+        each trade in offeredTrades
+          tr
+            td #{trade.receivingUser.username}
+            td 
+              h3 #{trade.offeredBook.title}
+              img.bookIcon(src=trade.offeredBook.photoUrl)
+            td
+              h3 #{trade.desiredBook.title}
+              img.bookIcon(src=trade.desiredBook.photoUrl)
+            td.pending #{trade.status}
+            td
+              a.cancel Cancel Trade
+  
+  

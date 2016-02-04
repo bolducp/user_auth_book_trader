@@ -1,0 +1,42 @@
+extends layout
+
+block links
+   link(rel='stylesheet', href='/css/userBooks.css')
+
+block content
+  h1 My books
+  #addBookWrapper
+    a(href='/profile/addBook')
+      button.btn.btn-info Add Book
+  if books.length
+    #tableWrapper
+      table.table.table-hover
+        thead
+          tr
+            th Book Cover
+            th Title
+            th Author
+            th Genre
+            th ISBN
+            th Available for trade
+        tbody
+          each book in books
+            tr(data-book = book.id)
+              td 
+                img.bookIcon(src=book.photoUrl)
+              td #{book.title}
+              td #{book.author}
+              td #{book.genre}
+              td #{book.isbn}
+              if book.available
+                td Yes  &nbsp;
+                  a#changeStatus make unavailable
+              else
+                td No  &nbsp;
+                  a#changeStatus make available
+  else
+    #noBooks
+      h2 You currently have no books
+      h4 How about adding a book to your collection?
+block scripts
+  script(src="/js/userBooks.js")

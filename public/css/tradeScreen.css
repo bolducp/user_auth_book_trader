@@ -1,0 +1,20 @@
+body {
+  background: url('/images/crisp_paper_ruffles.png') no-repeat;
+  background-size: cover;
+  color: black;
+}
+
+#tradeTitle {
+  text-align: center;
+  color: white;
+  font-size: 145px;
+  text-shadow: 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black, 0px 0px 2px black;
+}
+
+img {
+  height: 400px;
+}
+
+h1 {
+  font-size: 80px;
+}

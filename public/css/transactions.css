@@ -1,0 +1,63 @@
+body {
+  background: url('/images/crisp_paper_ruffles.png') no-repeat;
+  background-size: cover;
+  color: black;
+  font-size: 18px;
+}
+
+img {
+  height: 150px;
+}
+
+h1 {
+  font-size: 145px;
+  text-align: center;
+}
+
+h2 {
+  margin-top: 40px;
+  font-family: 'Montez', cursive;
+  font-size: 60px;
+  border-bottom: 2px solid black;
+}
+
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table {
+  margin-bottom: 60px;
+}
+
+th {
+  font-weight: bolder;
+  font-size: 22px;
+}
+
+.pending {
+  color: orange;
+}
+
+.accept {
+  color: green;
+}
+
+.decline {
+  color: #cc0000;
+}
+
+.accept:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: #00cc00;
+}
+
+.cancel:hover {
+  text-decoration: none;
+  cursor: pointer;
+}
+.decline:hover {
+  text-decoration: none;
+  cursor: pointer;
+  color: red;
+}
