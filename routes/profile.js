@@ -156,12 +156,13 @@ router.put('/transactions/accepted', function(req, res) {
   });
 });
 
-router.delete('/deleteBook', function(req, res) {
-  Book.where({_id: req.body.bookId}).findOneAndRemove(function(err, deletedBook) {
-    if (err) return res.status(400).send("error saving received book", err);
-    res.send(deletedBook);
-  });
-});
+// --- For Future Use ---
 
+// router.delete('/deleteBook', function(req, res) {
+//   Book.where({_id: req.body.bookId}).findOneAndRemove(function(err, deletedBook) {
+//     if (err) return res.status(400).send("error saving received book", err);
+//     res.send(deletedBook);
+//   });
+// });
 
 module.exports = router;
