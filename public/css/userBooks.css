@@ -58,3 +58,10 @@ th {
   background-color: #ffffff;
   opacity: 0.9;
 }
+
+#title:hover,
+#author:hover,
+#genre:hover,
+#available:hover {
+  cursor: pointer;
+}

@@ -14,25 +14,29 @@ block content
         thead
           tr
             th Book Cover
-            th Title
-            th Author
-            th Genre
+            th#title(data-sort=1) Title 
+              span.glyphicon.glyphicon-sort
+            th#author(data-sort=1) Author 
+              span.glyphicon.glyphicon-sort
+            th#genre(data-sort=1) Genre 
+              span.glyphicon.glyphicon-sort
             th ISBN
-            th Available for trade
+            th#available(data-sort=1) Available for trade 
+              span.glyphicon.glyphicon-sort
         tbody
           each book in books
-            tr(data-book = book.id)
+            tr.dataRow(data-book = book.id)
               td 
                 img.bookIcon(src=book.photoUrl)
-              td #{book.title}
-              td #{book.author}
-              td #{book.genre}
+              td.title #{book.title}
+              td.author #{book.author}
+              td.genre #{book.genre}
               td #{book.isbn}
               if book.available
-                td Yes  &nbsp;
+                td.available Yes  &nbsp;
                   a#changeStatus make unavailable
               else
-                td No  &nbsp;
+                td.available No  &nbsp;
                   a#changeStatus make available
   else
     #noBooks
