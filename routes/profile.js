@@ -113,8 +113,35 @@ router.put('/transactions', function(req, res){
     if (err) return res.status(400).send("error finding trade", err);
     trade.status = req.body.result;
     trade.save(function(err, savedTrade){
-      if (err) return res.status(400).send("error saving declined trade", err);
-      res.status(200).send("transaction declined");
+      if (err) return res.status(400).send("error saving declined/cancelled trade", err);
+      res.status(200).send("transaction declined/cancelled");
+    });
+  });
+});
+
+router.put('/transactions/accepted', function(req, res) {
+  Trade.findById(req.body.tradeId, function(err, acceptedTrade){
+    if (err) return res.status(400).send("error finding trade", err);
+    console.log(acceptedTrade);
+    Book.findById(acceptedTrade.offeredBook, function(err, offBook) {
+      if (err) return res.status(400).send("error finding offered book", err);
+      Book.findById(acceptedTrade.desiredBook, function(err, desBook) {
+        if (err) return res.status(400).send("error finding offered book", err);
+        var temp = desBook.userId;
+        desBook.userId = offBook.userId;
+        offBook.userId = temp;
+        acceptedTrade.status = 'accepted';
+        desBook.save(function(err, savedResBook) {
+          if (err) return res.status(400).send("error saving received book", err);
+          offBook.save(function(err, savedOffBook) {
+            if (err) return res.status(400).send("error saving offered book", err);
+            acceptedTrade.save(function(err, savedResBook) {
+              if (err) return res.status(400).send("error saving trade", err);
+              res.send('ok');
+            });
+          });
+        });
+      });
     });
   });
 });
