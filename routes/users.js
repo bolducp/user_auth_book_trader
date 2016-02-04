@@ -12,6 +12,7 @@ var ref = new Firebase('https://book-trading.firebaseio.com/');
 
 /* POST to create new user */
 router.post('/register', function(req, res, next) {
+  console.log(req.body);
   ref.createUser({email: req.body.email, password: req.body.password}, function(err, userData) {
     if(err) return res.status(400).send(err);
     var user = new User({
@@ -22,7 +23,7 @@ router.post('/register', function(req, res, next) {
       favorites: req.body.favorites
     });
      user.save(function(err, savedUser) {
-      res.send(savedUser);
+      res.send("savedUser");
     });
   });
 });

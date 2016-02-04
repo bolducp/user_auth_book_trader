@@ -3,13 +3,11 @@
 var $email, $password, $password2;
 
 $(function() {
-  $('form').on('submit', registerUser);
-  console.log("init! here!");
+  $('button').click(registerUser);
 });
 
 function registerUser(e) {
   e.preventDefault();
-
   var email = $('#email').val();
   var password = $('#password').val();
   var password2 =$('#password2').val();
@@ -26,7 +24,7 @@ function registerUser(e) {
   var newUser = {email: email, password: password, username: username, phone: phone, favorites: favorites};
 
   $.post('/users/register', newUser)
-  .success(function() {
+  .success(function(data) {
     location.href = '/login';
   })
   .fail(function(err) {
