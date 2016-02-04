@@ -4,6 +4,7 @@ var $email, $password, $password2;
 
 $(function() {
   $('form').on('submit', registerUser);
+  console.log("init! here!");
 });
 
 function registerUser(e) {
