@@ -35,7 +35,7 @@ router.post('/login', function(req, res, next) {
     if(err) return res.status(400).send(err);
     User.findOne({uid: authData.uid}, function(err, user) {
       var token = user.generateToken();
-      res.cookie('mytoken', token).send("token, ", token);
+      res.cookie('mytoken', token).send("token");
     });
   });
 });
