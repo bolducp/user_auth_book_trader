@@ -137,7 +137,13 @@ router.put('/transactions/accepted', function(req, res) {
             if (err) return res.status(400).send("error saving offered book", err);
             acceptedTrade.save(function(err, savedResBook) {
               if (err) return res.status(400).send("error saving trade", err);
-              res.send('ok');
+              Trade.where( {status: 'pending', $or:[ {offeredBook: acceptedTrade.offeredBook},
+                {offeredBook: acceptedTrade.desiredBook}, {desiredBook: acceptedTrade.offeredBook},
+                {desiredBook: acceptedTrade.desiredBook} ]})
+                .update({status: 'trade expired'}, function(err, updatedBooks) {
+                  if (err) return res.status(400).send("error updating books", err);
+                  res.send('ok');
+                })
             });
           });
         });
