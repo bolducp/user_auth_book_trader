@@ -15,7 +15,7 @@ function acceptTrade() {
     data: {tradeId: tradeId}
   }).success(function(data){
     console.log("accepted?");
-    // location.href="/profile/transactions";
+    location.href="/profile/transactions";
   })
   .fail(function(err){
     console.log("error accepting transaction", err);
