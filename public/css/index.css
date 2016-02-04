@@ -12,8 +12,23 @@ h1 {
 
 p {
   color: rgb(0, 212, 176);
-  text-shadow: 0px 0px 2px white, 0px 0px 2px white;
   font-size: 25px;
+}
+
+h4 {
+  color:black;
+}
+
+#getStartedBtn {
+  color: white;
+  width: 200px;
+  height: 60px;
+  font-size: 24px;
+  background-color: #31b0d5;
+}
+
+#getStartedBtn:hover {
+  background-color: #279cbf;
 }
 
 #logoutLink {
@@ -23,14 +38,19 @@ p {
 #homepageCenter {
  margin-left: 25%;
  margin-right: 25%;
- padding: 5px;
+ padding: 5px 0 20px 0;
  background-color: #ffffff;
- opacity: 0.6;
+ border: 2px solid black;
+ opacity: 0.9;
  filter: alpha(opacity=60);
 }
 
 #homepageCenter h2 a {
   margin: 15%;
   font-weight: bold;
-  color: #000000;
+  color: white;
+}
+
+#logoutLink {
+  display: none;
 }

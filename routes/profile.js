@@ -19,6 +19,10 @@ router.get('/', function(req, res, next){
   });
 });
 
+router.get('/changePassword', function(req, res){
+  res.render('changePassword');
+})
+
 router.get('/addBook', function(req, res) {
   res.render('addBook');
 });
@@ -143,7 +147,7 @@ router.put('/transactions/accepted', function(req, res) {
                 .update({status: 'trade expired'}, function(err, updatedBooks) {
                   if (err) return res.status(400).send("error updating books", err);
                   res.send('ok');
-                })
+                });
             });
           });
         });

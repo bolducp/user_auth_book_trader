@@ -1,8 +1,11 @@
 extends layout
 
+block links
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+
 block content
   h1 Add a book to your collection
-  form
+  form#addBookForm
     .form-group
       label(for='title') Title:
       input#title.form-control(type='text', placeholder='title')

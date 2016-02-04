@@ -1,17 +1,18 @@
 extends layout
 
 block links
-   link(rel='stylesheet', href='/css/userBooks.css')
+  link(rel='stylesheet', href='/css/loggedInNavbar.css')
+  link(rel='stylesheet', href='/css/userBooks.css')
 
 block content
   h1 My books
   #addBookWrapper
     a(href='/profile/addBook')
       button.btn.btn-info Add Book
-  br
-  input#search.form-control(type='text', placeholder='Search')
-  br
   if books.length
+    br
+    input#search.form-control(type='text', placeholder='Search')
+    br
     #tableWrapper
       table.table.table-hover
         thead

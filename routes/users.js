@@ -39,15 +39,23 @@ router.post('/login', function(req, res, next) {
   });
 });
 
+
+router.get('/resetPassword', function(req, res, next){
+  res.render('resetPassword');
+});
+
+
+
 /* POST request to reset password */
 router.post('/resetPassword', function(req, res, next){
+  console.log(req.body.email);
   ref.resetPassword({
     email: req.body.email
   }, function(error) {
     if (error) {
       res.status(400).send(error);
     } else {
-      res.send();
+      res.send("sent!");
     }
   });
 });

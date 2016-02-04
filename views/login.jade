@@ -2,14 +2,19 @@ extends layout
 
 block content
   h1 Login
-  form
-    .form-group
-      label(for='email') Email address
-      input#email.form-control(type='email', placeholder='Email')
-    .form-group
-      label(for='password') Password
-      input#password.form-control(type='password', placeholder='Password')
-    button.btn.btn-default(type='submit') Login
+  .row
+    .col-xs-8
+      form
+        .form-group
+          h3 Email address
+          input#email.form-control(type='email', placeholder='Email')
+        .form-group
+          h3 Password
+          input#password.form-control(type='password', placeholder='Password')
+        button.btn.btn-info.btn-lg(type='submit') Login 
+  
+        a(href='/users/resetPassword') 
+          h4 Forgot Password
 
 block scripts
   script(src="/js/login.js")
