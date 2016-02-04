@@ -5,27 +5,11 @@ $(document).ready(init);
 var $rows;
 
 function init() {
-  $('table').on('click', '#changeStatus', toggleStatus);
   $rows = $('.dataRow');
   $('table').on('click', '#title', sortByTitle);
   $('table').on('click', '#author', sortByAuthor);
   $('table').on('click', '#genre', sortByGenre);
-  $('table').on('click', '#available', sortByAvailable);
 };
-
-function toggleStatus(){
-  var bookId = $(this).closest('tr').data('book');
-
-  $.ajax({
-    method: "PUT",
-    url: "/profile/userBooks",
-    data: {bookId: bookId}
-  }).success(function(data){
-    location.href = "/profile/userBooks"
-  }).fail(function(err){
-    console.log("err ", err);
-  })
-}
 
 function sortByTitle() {
   var $this = $(this);
@@ -40,11 +24,6 @@ function sortByAuthor() {
 function sortByGenre() {
   var $this = $(this);
   sortby('.genre', $this);
-}
-
-function sortByAvailable() {
-  var $this = $(this);
-  sortby('.available', $this);
 }
 
 function sortby(field, $this) {
