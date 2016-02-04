@@ -94,9 +94,11 @@ router.post('/createOffer', function(req, res) {
 router.get('/transactions', function(req, res) {
   Trade.find({receivingUser: req.user._id, status: 'pending'}, function(err, receivedTrades) {
     if (err) return res.status(400).send("error finding recieved trades",err);
-    res.render('transactions', {receivedTrades: receivedTrades});
+    Trade.find({offeringUser: req.user._id, status: 'pending'}, function(err, offeredTrades) {
+      if (err) return res.status(400).send("error finding offered trades",err);
+        res.render('transactions', {receivedTrades: receivedTrades, offeredTrades: offeredTrades});
+    }).populate('offeredBook desiredBook receivingUser');
   }).populate('offeredBook desiredBook offeringUser');
-  // res.render('transactions', 'stuff');
 })
 
 
