@@ -1,0 +1,7 @@
+#changePassword, #logoutLink {
+  display: inherit;
+}
+
+#registerLink, #loginLink {
+  display: none;
+}

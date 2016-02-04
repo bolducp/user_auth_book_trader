@@ -11,6 +11,7 @@ function init() {
   $('table').on('click', '#author', sortByAuthor);
   $('table').on('click', '#genre', sortByGenre);
   $('table').on('click', '#available', sortByAvailable);
+  $('table').on('click', '.deleteBook', deleteBook);
   $('#search').keyup(searchList);
 };
 
@@ -65,4 +66,19 @@ function searchList() {
 		return $(this).children('.searchable').text().toLowerCase().includes(text);
 	});
   $('tbody').empty().append($filtered);
+}
+
+function deleteBook() {
+  var bookId = $(this).closest('tr').data('book');
+  $.ajax({
+    url: '/profile/deleteBook',
+    method: "DELETE",
+    data: {bookId: bookId}
+  })
+  .success(function(data) {
+    location.href="/profile/userBooks";
+  })
+  .fail(function(err) {
+    console.log('error deleting book:', err);
+  })
 }

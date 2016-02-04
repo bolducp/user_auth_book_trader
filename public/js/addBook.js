@@ -7,10 +7,11 @@ $(function() {
 function addBook(e) {
   e.preventDefault();
   var newBook = {};
-  newBook.title = $('#title').val();
-  newBook.author = $('#author').val();
-  newBook.isbn = $('#isbn').val();
-  newBook.genre = $('#genre').val();
+  newBook.title = $('#title').val() || 'title unknown';
+  newBook.author = $('#author').val() || 'author unknown';
+  newBook.isbn = $('#isbn').val() || 0;
+  newBook.genre = $('#genre').val() || 'n/a';
+  newBook.photoUrl = $('#photoUrl').val() || "http://i.imgur.com/sJ3CT4V.gif";
 
   $.post('/profile/addBook', newBook)
   .success(function(data) {

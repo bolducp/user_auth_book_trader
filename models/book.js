@@ -7,10 +7,10 @@ var bookSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
   },
-  title: String,
-  author: String,
-  isbn: Number,
-  genre: String,
+  title: {type: String, default: 'title unknown'},
+  author: {type: String, default: 'author unknown'},
+  isbn: {type: Number, default: 0},
+  genre: {type: String, default: 'genre unknown'},
   available: {type: Boolean, default: true},
   photoUrl: {type: String, default: "http://i.imgur.com/sJ3CT4V.gif"}
 });

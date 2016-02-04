@@ -27,6 +27,8 @@ block content
             th ISBN
             th#available(data-sort=1) Available for trade 
               span.glyphicon.glyphicon-sort
+            th &nbsp;
+              span.glyphicon.glyphicon-trash
         tbody
           each book in books
             tr.dataRow(data-book = book.id)
@@ -42,6 +44,8 @@ block content
               else
                 td.available No  &nbsp;
                   a#changeStatus make available
+              td
+                span.deleteBook.glyphicon.glyphicon-trash
   else
     #noBooks
       h2 You currently have no books

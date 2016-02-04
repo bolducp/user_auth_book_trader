@@ -65,3 +65,7 @@ th {
 #available:hover {
   cursor: pointer;
 }
+
+.deleteBook:hover {
+  cursor: pointer;
+}
