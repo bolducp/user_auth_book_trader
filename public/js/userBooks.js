@@ -11,6 +11,7 @@ function init() {
   $('table').on('click', '#author', sortByAuthor);
   $('table').on('click', '#genre', sortByGenre);
   $('table').on('click', '#available', sortByAvailable);
+  $('#search').keyup(searchList);
 };
 
 function toggleStatus(){
@@ -56,4 +57,12 @@ function sortby(field, $this) {
 	});
 	$this.data('sort', -mult);
 	$('tbody').empty().append($rows);
+}
+
+function searchList() {
+	var text = $('#search').val();
+	var $filtered = $rows.filter(function() {
+		return $(this).children('.searchable').text().toLowerCase().includes(text);
+	});
+  $('tbody').empty().append($filtered);
 }

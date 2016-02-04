@@ -8,6 +8,9 @@ block content
   #addBookWrapper
     a(href='/profile/addBook')
       button.btn.btn-info Add Book
+  br
+  input#search.form-control(type='text', placeholder='Search')
+  br
   if books.length
     #tableWrapper
       table.table.table-hover
@@ -28,10 +31,10 @@ block content
             tr.dataRow(data-book = book.id)
               td 
                 img.bookIcon(src=book.photoUrl)
-              td.title #{book.title}
-              td.author #{book.author}
-              td.genre #{book.genre}
-              td #{book.isbn}
+              td.title.searchable #{book.title}
+              td.author.searchable #{book.author}
+              td.genre.searchable #{book.genre}
+              td.searchable #{book.isbn}
               if book.available
                 td.available Yes  &nbsp;
                   a#changeStatus make unavailable

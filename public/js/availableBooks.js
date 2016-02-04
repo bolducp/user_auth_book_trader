@@ -9,6 +9,7 @@ function init() {
   $('table').on('click', '#title', sortByTitle);
   $('table').on('click', '#author', sortByAuthor);
   $('table').on('click', '#genre', sortByGenre);
+  $('#search').keyup(searchList);
 };
 
 function sortByTitle() {
@@ -35,4 +36,12 @@ function sortby(field, $this) {
 	});
 	$this.data('sort', -mult);
 	$('tbody').empty().append($rows);
+}
+
+function searchList() {
+	var text = $('#search').val();
+	var $filtered = $rows.filter(function() {
+		return $(this).children('.searchable').text().toLowerCase().includes(text);
+	});
+  $('tbody').empty().append($filtered);
 }

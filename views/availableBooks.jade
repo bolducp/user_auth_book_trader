@@ -5,6 +5,9 @@ block links
 
 block content
   h1 All Available Books
+  br
+  input#search.form-control(type='text', placeholder='Search')
+  br
   div#tableWrapper
     table.table.table-hover
       thead
@@ -23,10 +26,10 @@ block content
           tr.dataRow(data-book = book.id)
             td 
               img.bookIcon(src=book.photoUrl)
-            td.title #{book.title}
-            td.author #{book.author}
-            td.genre #{book.genre}
-            td #{book.isbn}
+            td.title.searchable #{book.title}
+            td.author.searchable #{book.author}
+            td.genre.searchable #{book.genre}
+            td.searchable #{book.isbn}
             td 
               a(href=`/profile/tradeScreen/${book.id}`)#offerTrade Offer Trade
               
